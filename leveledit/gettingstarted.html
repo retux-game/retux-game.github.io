@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Level Editing Guide - ReTux</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Libre open source side-scrolling platformer starring Tux the penguin.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <h1 class="header"><img src="../images/logo.png" alt="ReTux"></h1>
+    <nav class="header">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../screenshots.html">Screenshots &amp; Videos</a></li>
+            <li><a href="../download.html">Download</a></li>
+            <li class="current"><a href="index.html">Level Editing Guide</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="https://github.com/retux-game/retux">Project Page</a></li>
+            <li><a href="https://liberapay.com/diligentcircle/">Liberapay</a></li>
+            <li><a href="https://www.patreon.com/diligentcircle">Patreon</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Getting Started</h2>
+
+        <h3>Table of Contents</h3>
+        <ol type="A">
+            <li><a href="#prereq">Pre-Requisites</a></li>
+            <li><a href="#basics">The Basics</a></li>
+        </ol>
+
+        <h3 id="prereq">Pre-Requisites</h3>
+        <p>Before you start making levels for ReTux, you will need to download Tiled version 1.0 or later (version 1.0 is necessary so that you can export the Tiled JSON format, which ReTux uses). You can download Tiled from its official website <a href="http://www.mapeditor.org/">here</a>.</p>
+        <p>You will also need ReTux. You will be using a copy of ReTux as a level editing environment.</p>
+        <p>While not entirely necessary, you should import ReTux's object types into Tiled. Do this by going to the Object Types Editor (in the View menu), selecting "Import Object Types" from the File menu of the Object Types Editor, and choosing "objecttypes.xml" from the ReTux data directory. This will cause Tiled to autocomplete object types and also provide a color guide.</p>
+
+        <h3 id="basics">The Basics</h3>
+        <p>Levels and worldmaps for ReTux are created using Tiled. This guide will not explain how using Tiled itself works; please see Tiled's documentation for that. Instead, this guide will assume you basically know how to use Tiled and explain only the specifics of using it for ReTux.</p>
+        <p>In addition to the levels and worldmaps themselves, there are some JSON-formatted text files needed for certain things. These will be explained in detail later. Any text editor can be used to create and modify these files. As with use of Tiled, this guide will not go into depth on the syntax of JSON files, but the format is relatively straightforward and examples are available.</p>
+        <p>To make creation of levels and worldmaps easier, ReTux comes with template files to build off of. These are data/levels/base.json, and data/worldmaps/base.json. To create a new level, start by opening data/levels/base.json in Tiled and saving it under a different name you wish to use for the level. To create a new worldmap, start by opening data/worldmaps/base.json in Tiled and saving it under a different name you wish to use for the worldmap.</p>
+        <p>ReTux does not impose any particular requirements for the file names of levels, but two levels or two worldmaps cannot have the same name, so it is highly recommended that you choose a name that someone else is not likely to choose. The file names of the levels and worldmaps are never visible to the player under normal circumstances, so they do not need to be nice-looking or informative. A suggested convention is something like "author-levelset-xx.tmx", where "author" is your name or alias, "levelset" is a shortened version of the name of the corresponding levelset, and "xx" is the level or worldmap number.</p>
+        <p>It is also highly recommended to never use upper-case letters in any file names. This is recommended to avoid accidentally causing problems for other people related to case-sensitivity of file systems.</p>
+    </main>
+
+    <div class="footer">
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="CC BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This page is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    </div>
+</body>
+
+</html>

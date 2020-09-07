@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Level Editing Guide - ReTux</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Libre open source side-scrolling platformer starring Tux the penguin.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <h1 class="header"><img src="../images/logo.png" alt="ReTux"></h1>
+    <nav class="header">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../screenshots.html">Screenshots &amp; Videos</a></li>
+            <li><a href="../download.html">Download</a></li>
+            <li class="current"><a href="index.html">Level Editing Guide</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="https://github.com/retux-game/retux">Project Page</a></li>
+            <li><a href="https://liberapay.com/diligentcircle/">Liberapay</a></li>
+            <li><a href="https://www.patreon.com/diligentcircle">Patreon</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Creating Timelines</h2>
+        <p>Timelines are special scripts located in "data/timelines" which are executed within levels. They are written in a custom mini-language which can also include Python calls if necessary. Timelines should be used for things like cutscenes and special level events.</p>
+        <p>Because ReTux is licensed under the GNU GPL and timelines link to ReTux, all timelines legally must be under a GPL-compatible license. Please indicate such a license with a comment or series of comments at the top of the timeline. See the timelines included with ReTux for an example.</p>
+
+        <h3>Table of Contents</h3>
+        <ol type="A">
+            <li><a href="#syntax">Timeline Syntax</a></li>
+            <li><a href="#commands">Commands</a></li>
+        </ol>
+
+        <h3 id="syntax">Timeline Syntax</h3>
+        <p>ReTux timelines are standard JSON files connecting moments of time with lists of instructions.</p>
+        <p>The base of any timeline is an object with "steps" in time from the moment the timeline started as keys, and lists of strings indicating instructions as values. A step is 1/56 of a second.</p>
+        <p>Each instruction consists of a command followed by an argument, separated by whitespace. The argument may be interpreted as multiple arguments depending on the command; in this case, arguments are separated by whitespace, but the final argument expected includes the entire remaining text. For example, if the "spam" command takes two arguments, the instruction "spam a b c d" will result in the first argument being "a" and the second argument being "b c d". If a command starts with or is a "#" character, the instruction is treated as a comment and not interpreted.</p>
+
+        <h3 id="commands">Commands</h3>
+        <p>The following commands are available for use in timelines:</p>
+        <ul>
+            <li>"setattr": Sets an attribute of an object. Takes three arguments: the first argument indicates the unique ID of the object, the second argument indicates the attribute to set, and the third argument indicates the value to set the attribute to (evaluated as a Python expression). The first argumnent can also be given as "__level__" to set an attribute of the current level.</li>
+            <li>"call": Calls a method of an object. Takes two arguments: the first argument indicates the unique ID of the object, and the second argument indicates the method to call. The first argumnent can also be given as "__level__" to call a method of the current level.</li>
+            <li>"dialog": Shows a dialog box to the player. Takes two arguments: the first argument indicates the character portrait to use, and the second argument indicates the text to show. The name of any image found in data/images/portraits minus the extension (e.g. "tux" for tux.png) can be specified as a portrait. Any other value will result in no portrait being used. To deliberately use no portrait, you should specify the first argument as "_".</li>
+            <li>"play_music": Changes the currently playing music to the file specified by the argument (located in "data/music"). Set the argument to "_" for no music.</li>
+            <li>"timeline": the timeline file specified by the argument (located in "data/timelines"), immediately ending the currently active timeline.</li>
+            <li>"skip_to": Skips all remaining instructions in the current step and skips to the step indicated by the argument. Note: this can only go forwards.</li>
+            <li>"exec": Executes the argument as Python code.</li>
+            <li>"if": Evaluates the argument as a Python expression. If the result is false, skips all remaining instructions in the current step.</li>
+            <li>"if_watched": If the currently active timeline has not been watched before, skips all remaining instructions in the current step.</li>
+            <li>"if_not_watched": If the currently active timeline has been watched before, skips all remaining instructions in the current step.</li>
+            <li>"while": Evaluates the argument as a Python expression. If the result is true, this instruction and all remaining instructions are duplicated for execution next step, and all future steps are shifted one step later. Otherwise, skips all remaining instructions in the current step. Effectively, this causes the affected instructions to repeat every step until the condition is satisfied.</li>
+        </ul>
+    </main>
+
+    <div class="footer">
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="CC BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This page is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    </div>
+</body>
+
+</html>

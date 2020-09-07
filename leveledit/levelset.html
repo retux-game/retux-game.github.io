@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Level Editing Guide - ReTux</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Libre open source side-scrolling platformer starring Tux the penguin.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+</head>
+
+<body>
+    <h1 class="header"><img src="../images/logo.png" alt="ReTux"></h1>
+    <nav class="header">
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../screenshots.html">Screenshots &amp; Videos</a></li>
+            <li><a href="../download.html">Download</a></li>
+            <li class="current"><a href="index.html">Level Editing Guide</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="https://github.com/retux-game/retux">Project Page</a></li>
+            <li><a href="https://liberapay.com/diligentcircle/">Liberapay</a></li>
+            <li><a href="https://www.patreon.com/diligentcircle">Patreon</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Defining the Levelset</h2>
+        <p>Once you have defined the levels, worldmaps, and timelines, there is only one thing left to do: actually define what the levelset is.</p>
+        <p>A levelset in ReTux is defined by a standard JSON file located in data/levelsets. It contains an object with the following keys:</p>
+        <ul>
+            <li>"name": A string indicating the name of the levelset, as shown in the levelset selection list.</li>
+            <li>"start_cutscene" (optional): A string indicating a level file located in data/levels to start before showing the game for the first time.</li>
+            <li>"worldmap" (optional): A string indicating the worldmap file located in data/worldmaps to start the game on. If unspecified, the levels are simply played in sequence.</li>
+            <li>"levels": An array of strings indicating level files located in data/levels which are the levels (excluding extra sub-levels) used in this levelset. This information is used to ascertain how much of the levelset is completed. Additionally, if no worldmap is defined, this array indicates what levels are to be played, and in what order.</li>
+            <li>"tuxdolls_available" (optional): An array of strings indicating level files located in data/levels which are the primary level files of levels containing Tux dolls. This information is used to make it possible for ReTux to ascertain what percentage of Tux dolls have been collected. If this is not defined, a player will not be able to reliably know how many Tux dolls are remaining. As such, while this array is technically optional, defining it is highly recommended.</li>
+        </ul>
+    </main>
+
+    <div class="footer">
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"><img alt="CC BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a><br />This page is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+    </div>
+</body>
+
+</html>
