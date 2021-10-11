@@ -26,20 +26,30 @@
     </nav>
 
     <main>
+        <nav>
+            <ul>
+                <li>Next page: <a href="timeline.html">Creating Timelines</a></li>
+                <li>Previous page: <a href="level.html">Editing Levels</a></li>
+                <li><a href="index.html">Index</a></li>
+            </ul>
+        </nav>
+        <hr>
         <h2>Editing Worldmaps</h2>
         <p>Worldmaps are technically optional, but a highly recommended part of most levelsets. A worldmap enables a levelset to branch out into alternative level choices and gives the player a chance to replay levels that have already been won.</p>
 
         <h3>Table of Contents</h3>
-        <ol type="A">
-            <li><a href="#properties">Worldmap Properties</a></li>
-            <li><a href="#construction">Worldmap Construction</a></li>
-        </ol>
+        <nav>
+            <ol type="A">
+                <li><a href="#properties">Worldmap Properties</a></li>
+                <li><a href="#construction">Worldmap Construction</a></li>
+            </ol>
+        <nav>
 
         <h3 id="properties">Worldmap Properties</h3>
         <p>A new copy of data/worldmaps/base.json will be the size of one screen, empty, and have its music set to "salcon.ogg".</p>
         <p>To change the size, simply resize the map to the desired size. Every screen is 25 tiles wide and 14 tiles tall.</p>
         <p>Unlike levels, worldmaps do not have special backgrounds defined. The background color is used if no tile is available. The background color of data/worldmaps/base.json is a color suitable for use as water.</p>
-        <p>The music used for the worldmap is specified by the custom "music" map property. This should be the exact file name of one of the files found in data/music. If another file exists with the same name, but with "-start" at the end of the base file name (before the extension), then ReTux considers that file to be the start of the music and plays it once before playing the indicated file.</p>
+        <p>The music used for the worldmap is specified by the custom "music" <i>(string)</i> map property. This should be the exact file name of one of the files found in data/music. If another file exists with the same name, but with "-start" at the end of the base file name (before the extension), then ReTux considers that file to be the start of the music and plays it once before playing the indicated file.</p>
         <p>It is possible to include a custom music file with a level set. If you do this, please make sure the file name is reasonably unique so that your custom music does not conflict with another level set's custom music. It is also possible to make the worldmap not play music by deleting the existing "music" custom property.</p>
 
         <h3 id="construction">Worldmap Construction</h3>
@@ -49,15 +59,23 @@
         <p>Every map must have a player object. It should be placed in the intended starting position on the map, on the "Objects" layer. If a levelset starts on this map, its position is where the player will be located.</p>
         <p>Level spaces and warp spaces should be placed in the "Spaces" layer. All spaces can optionally have the following custom properties defined:</p>
         <ul>
-            <li>"level": Indicates the name of a file found in data/levels which corresponds with the space. In the case of a level space, the level defined must be completed at least once before the player is allowed to move through the space. In the case of a warp space, the level must be completed each time the warp space is used; it can be completed either by winning the level, or by warping to "__map__". Level spaces with no level defined are invisible and can simply be passed through, while warp spaces with no level defined cause the player to warp to their destination immediately when "entered".</li>
+            <li>"level" <i>(string)</i>: Indicates the name of a file found in data/levels which corresponds with the space. In the case of a level space, the level defined must be completed at least once before the player is allowed to move through the space. In the case of a warp space, the level must be completed each time the warp space is used; it can be completed either by winning the level, or by warping to "__map__". Level spaces with no level defined are invisible and can simply be passed through, while warp spaces with no level defined cause the player to warp to their destination immediately when "entered".</li>
             <li>"level_spawn": Indicates the spawn point within the level to start the player at, overriding the level's own settings.</li>
-            <li>"ID": Indicates the ID of the space, used by warp spaces and save files. If this is undefined, an ID will automatically be chosen.</li>
+            <li>"ID" <i>(string)</i>: Indicates the ID of the space, used by warp spaces and save files. If this is undefined, an ID will automatically be chosen.</li>
         </ul>
-        <p>Warp spaces should also have the custom "dest" property defined. This indicates the other warp space it should cause the player to warp to. It should be a string in the form of "mapname:id", where "mapname" is the file name of the worldmap located in data/worldmaps, and "id" is the ID of a space within that worldmap.</p>
+        <p>Warp spaces should also have the custom "dest" <i>(string)</i> property defined. This indicates the other warp space it should cause the player to warp to. It should be in the form of "mapname:id", where "mapname" is the file name of the worldmap located in data/worldmaps, and "id" is the ID of a space within that worldmap.</p>
         <p>Water is simply an animated water tile. It has no effect on the game and should be placed as a tile generally in the "Water" tile layer.</p>
         <p>The layout of the worldmap is specified by drawing polylines in the "map_path" layer. These polylines should be in the top-left corner of the road tiles and map objects they correspond to. Each polyline should be drawn from the earlier level to the later level that it leads to. Where the path goes between the starting level and the destination level does not matter, but note that the initial direction the player moves out of determines what direction key the player uses to start moving along the path, and there are only four such directional keys (left, right, up, and down). Paths that start diagonally will work, but two paths that start diagonally in the same direction will conflict with each other when the player attempts to move in that direction, and only one of them will be followed.</p>
         <p>The direction a path is drawn in specifies the "forward" direction. This information is used to define what the "sneak" key does.</p>
         <p>It is possible for a path to lead to or from an empty area on the map. This is useful if you want to create a fork in the road.</p>
+        <hr>
+        <nav>
+            <ul>
+                <li>Next page: <a href="timeline.html">Creating Timelines</a></li>
+                <li>Previous page: <a href="level.html">Editing Levels</a></li>
+                <li><a href="index.html">Index</a></li>
+            </ul>
+        </nav>
     </main>
 
     <div class="footer">

@@ -26,41 +26,49 @@
     </nav>
 
     <main>
+        <ul>
+            <li>Next page: <a href="worldmap.html">Editing Worldmaps</a></li>
+            <li>Previous page: <a href="gettingstarted.html">Getting Started</a></li>
+            <li><a href="index.html">Index</a></li>
+        </ul>
+        <hr>
         <h2>Editing Levels</h2>
         <p>Levels are, of course, the meat of any levelset. They are what you will spend the most of your time on. Levels are stored in TMX files found under the data/levels directory.</p>
 
         <h3>Table of Contents</h3>
-        <ol type="A">
-            <li><a href="#properties">Level Properties</a></li>
-            <li><a href="#sublevels">Sub-Levels</a></li>
-            <li><a href="#construction">Level Construction</a></li>
-            <li><a href="#objects">Objects</a>
-                <ol type="i">
-                    <li><a href="#player">Tux</a></li>
-                    <li><a href="#enemies">Basic Enemies</a></li>
-                    <li><a href="#icicle">Icicle</a></li>
-                    <li><a href="#crushers">Krush and Krosh</a></li>
-                    <li><a href="#snowman">Snowman</a></li>
-                    <li><a href="#raccot">Raccot</a></li>
-                    <li><a href="#hittableblocks">Hittable Blocks</a></li>
-                    <li><a href="#items">Basic Items</a></li>
-                    <li><a href="#otherblocks">Other Special Blocks</a></li>
-                    <li><a href="#spawnobj">Spawning-related Objects</a></li>
-                </ol>
-            </li>
-            <li><a href="#paths">Moving Object Paths</a></li>
-            <li><a href="#circoflame">Circoflame Paths</a></li>
-            <li><a href="#warps">Warp Pipes</a>
-                <ol type="a">
-                    <li><a href="#objectwarp">Object Warp Spawns</a></li>
-                </ol>
-            </li>
-        </ol>
+        <nav>
+            <ol type="A">
+                <li><a href="#properties">Level Properties</a></li>
+                <li><a href="#sublevels">Sub-Levels</a></li>
+                <li><a href="#construction">Level Construction</a></li>
+                <li><a href="#objects">Objects</a>
+                    <ol type="i">
+                        <li><a href="#player">Tux</a></li>
+                        <li><a href="#enemies">Basic Enemies</a></li>
+                        <li><a href="#icicle">Icicle</a></li>
+                        <li><a href="#crushers">Krush and Krosh</a></li>
+                        <li><a href="#snowman">Snowman</a></li>
+                        <li><a href="#raccot">Raccot</a></li>
+                        <li><a href="#hittableblocks">Hittable Blocks</a></li>
+                        <li><a href="#items">Basic Items</a></li>
+                        <li><a href="#otherblocks">Other Special Blocks</a></li>
+                        <li><a href="#spawnobj">Spawning-related Objects</a></li>
+                    </ol>
+                </li>
+                <li><a href="#paths">Moving Object Paths</a></li>
+                <li><a href="#circoflame">Circoflame Paths</a></li>
+                <li><a href="#warps">Warp Pipes</a>
+                    <ol type="a">
+                        <li><a href="#objectwarp">Object Warp Spawns</a></li>
+                    </ol>
+                </li>
+            </ol>
+        </nav>
 
         <h3 id="properties">Level Properties</h3>
         <p>When you create a new copy of data/levels/base.json, you will have an empty level which with a size of one screen, the "arctis" background, and the music set to "chipdisko.ogg". Of course, you don't want every level you create to be in this configuration.</p>
         <p>Changing the size of a level is simple enough: simply resize the map to the desired size. Each screen is 25 tiles wide by 14 tiles tall, so keep this in mind when choosing your level's size.</p>
-        <p>The background used for the level is specified by the custom "background" map property. The following background names can be entered:</p>
+        <p>The background used for the level is specified by the custom "background" <i>(string)</i> map property. The following background names can be entered:</p>
         <ul>
             <li>arctis</li>
             <li>cave</li>
@@ -70,22 +78,22 @@
             <li>cloudmountains</li>
         </ul>
         <p>To see what each of these backgrounds look like, see the images in data/images/backgrounds. You can also append "_castle" to any of these background names to get a castle background with the chosen background name visible out the windows; for example "arctis_castle" will create a castle background, with windows showing the arctis background outside.</p>
-        <p>You can also control the positioning of the background within the level. This is especially useful if your level is taller than one screen; it allows you to align the background with the bottom of the level, for instance. The positioning of the background is controlled with the custom "background_x" and "background_y" map properties, which indicate the number of <em>pixels</em> (not tiles) to reposition the background to the right and down, respectively. For example, to align the background to the bottom of the level when the level's height is 24 tiles, you can set "background_y" to 320 (that's the height of the tiles multiplied by the difference between the level's height and the height of one screen).</p>
-        <p>The music used for the level is specified by the custom "music" map property. This should be the exact file name of one of the files found in data/music. If another file exists with the same name, but with "-start" at the end of the base file name (before the extension), then ReTux considers that file to be the start of the music and plays it once before playing the indicated file.</p>
+        <p>You can also control the positioning of the background within the level. This is especially useful if your level is taller than one screen; it allows you to align the background with the bottom of the level, for instance. The positioning of the background is controlled with the custom "background_x" <i>(int)</i> and "background_y" <i>(int)</i> map properties, which indicate the number of <em>pixels</em> (not tiles) to reposition the background to the right and down, respectively. For example, to align the background to the bottom of the level when the level's height is 24 tiles, you can set "background_y" to 320 (that's the height of the tiles multiplied by the difference between the level's height and the height of one screen).</p>
+        <p>The music used for the level is specified by the custom "music" <i>(string)</i> map property. This should be the exact file name of one of the files found in data/music. If another file exists with the same name, but with "-start" at the end of the base file name (before the extension), then ReTux considers that file to be the start of the music and plays it once before playing the indicated file.</p>
         <p>It is possible to include a custom music file with a level set. If you do this, please make sure the file name is reasonably unique so that your custom music is not likely to conflict with another level set's custom music, and place it in your data/music directory. It is also possible to make the level not play music by deleting the existing "music" custom property.</p>
-        <p>The name of the level is indicated by the custom "name" map property. This can be anything you like; it will be displayed when the player is on the level's worldmap space. If this is not specified, something like "Level 1" (indicating the appropriate level number) will be shown instead.</p>
+        <p>The name of the level is indicated by the custom "name" <i>(string)</i> map property. This can be anything you like; it will be displayed when the player is on the level's worldmap space. If this is not specified, something like "Level 1" (indicating the appropriate level number) will be shown instead.</p>
         <p>There are also a few other map properties you can specify. A list of all available custom map properties follows:</p>
         <ul>
-            <li>"ambient_light": Indicates a color to use as ambient lighting for the level. White is completely lit (the default), and black is completely unlit.</li>
-            <li>"background_x": The horizontal offset of the background in pixels, where positive values move the background to the right and negative values move it to the left.</li>
-            <li>"background_x": The vertical offset of the background in pixels, where positive values move the background downward and negative values move it upward.</li>
-            <li>"disable_lights": If the level is not completely lit, certain objects will emit light by default. Set this property to true to disable this.</li>
-            <li>"music": The music file to use for the level's music, found in the data/music directory.</li>
-            <li>"name": The name of the level. Default is to simply display the numeric level number.</li>
-            <li>"persistent": A boolean value indicating whether or not the level stays the same when warping to a different sub-level. Default is True.</li>
+            <li>"ambient_light" <i>(color)</i>: Indicates a color to use as ambient lighting for the level. White is completely lit (the default), and black is completely unlit.</li>
+            <li>"background_x" <i>(int)</i>: The horizontal offset of the background in pixels, where positive values move the background to the right and negative values move it to the left.</li>
+            <li>"background_y" <i>(int)</i>: The vertical offset of the background in pixels, where positive values move the background downward and negative values move it upward.</li>
+            <li>"disable_lights" <i>(bool)</i>: If the level is not completely lit, certain objects will emit light by default. Set this property to True to disable this. Default is False.</li>
+            <li>"music" <i>(string)</i>: The music file to use for the level's music, found in the data/music directory.</li>
+            <li>"name" <i>(string)</i>: The name of the level. Default is to simply display the numeric level number.</li>
+            <li>"persistent" <i>(bool)</i>: Whether or not the level stays the same when warping to a different sub-level. Default is True.</li>
             <li>"spawn": The ID of the spawn point to spawn Tux from. This can be used to start a level with Tux exiting a warp pipe. By default, Tux simply starts where he is placed in the level.</li>
-            <li>"time_bonus": The time bonus to start the level with. Every second the player plays the level prior to winning it, the time bonus decreases by 100. If unspecified, the default time bonus is 30000.</li>
-            <li>"timeline": Indicates the name of a timeline file, located in "data/timelines", to start when the level starts. This is useful for cutscenes.</li>
+            <li>"time_bonus" <i>(int)</i>: The time bonus to start the level with. Every second the player plays the level prior to winning it, the time bonus decreases by 100. If unspecified, the default time bonus is 30000.</li>
+            <li>"timeline" <i>(string)</i>: Indicates the name of a timeline file, located in "data/timelines", to start when the level starts. This is useful for cutscenes.</li>
         </ul>
 
         <h3 id="sublevels">Sub-Levels</h3>
@@ -121,7 +129,7 @@
             <li>"checkpoint": A rectangle that sets the level's currently active checkpoint when the player collides with it.</li>
         </ul>
         <p>To create any of these collision objects, simply draw a rectangle object and set its type to the appropriate type listed above. In general, it is suggested to put these objects in the "Collision Objects" layer, but there is no particular requirement for you to do this. Alternatively, as a convenience, you can draw a rectangle in the "solid" layer without specifying a type, and it will be implicitly defined as a "solid" collision object.</p>
-        <p>The timeline switched to by "timeline_switcher" collision objects is defined by the custom "timeline" property. This should be the name of a timeline file located in data/timelines.</p>
+        <p>The timeline switched to by "timeline_switcher" collision objects is defined by the custom "timeline" <i>(string)</i> property. This should be the name of a timeline file located in data/timelines.</p>
         <p>The spawn point used for "checkpoint" collision objects is defined by the custom "dest" property. This should be the ID of a spawn point within this level file, or alternatively a string in the form "levelname:id", where "levelname" is the file name of the sub-level located in data/levels, and "id" is the ID of a spawn point within that sub-level.</p>
 
         <h3 id="objects">Objects</h3>
@@ -139,10 +147,10 @@
         <p>A Tux object can optionally have the following custom properties defined:</p>
         <ul>
             <li>"ID": The unique identifier of the object within the level. Default is "player".</li>
-            <li>"human": A boolean value indicating whether or not Tux is controlled by a human. If this is False, Tux can only be moved by the timeline. Default is True.</li>
-            <li>"lose_on_death": A boolean value indicating whether or not the level ends in defeat if Tux dies. Setting this to False can be useful for cutscenes, but note that if this is False and Tux dies, the level will not end until the timeline causes it to do so. Default is True.</li>
-            <li>"view_frozen": A boolean value indicating whether or not the view is "frozen", i.e. will remain in the same location regardless of where Tux moves. This is useful for boss battles. Default is False.</li>
-            <li>"view_is_barrier": A boolean value indicating whether or not the view stops Tux's movement. Setting this to False can be useful for cutscenes. Default is True.</li>
+            <li>"human" <i>(bool)</i>: Whether or not Tux is controlled by a human. If this is False, Tux can only be moved by the timeline. Default is True.</li>
+            <li>"lose_on_death" <i>(bool)</i>: Whether or not the level ends in defeat if Tux dies. Setting this to False can be useful for cutscenes, but note that if this is False and Tux dies, the level will not end until the timeline causes it to do so. Default is True.</li>
+            <li>"view_frozen" <i>(bool)</i>: Whether or not the view is "frozen", i.e. will remain in the same location regardless of where Tux moves. This is useful for boss battles. Default is False.</li>
+            <li>"view_is_barrier" <i>(bool)</i>: Whether or not the view stops Tux's movement. Setting this to False can be useful for cutscenes. Default is True.</li>
             </ul>
             <p>While "human" is False, Tux can be controlled by a timeline in the following ways (see <a href="timeline.html">Creating Timelines</a> for more information about timelines):</p>
             <ul>
@@ -162,12 +170,23 @@
         <p>ReTux has a variety of enemies that can be placed in a level. Most of the basic enemies are tiles found in the "creatures" tileset. If they touch the player from the side or bottom, the player is hurt. Many enemies can be "stomped" by the player landing on top of them; those that cannot be "stomped" instead hurt the player in this case.</p>
         <ul>
             <li>The walking snowball is the second tile found in the "creatures" tileset. Its type name is "walking_snowball". It walks off cliffs and can be killed by stomping, knocking, burning, freezing, or blasting. This enemy is similar to the Goomba from the Super Mario series.</li>
-            <li>The walking iceblock is the third tile found in the "creatures" tileset. Its type name is "walking_iceblock". It turns around at cliffs and can be killed by knocking, burning, or blasting. When stomped, it becomes "flat" and can be carried. It can then be kicked at enemies to knock them, or it can be kicked at hittable blocks to hit them. It cannot be frozen. If hit by an ice bullet, it will become flat if in the kicked state, or return to normal if flat. This enemy is similar to the red Koopa from the Super Mario series.</li>
-            <li>A walking iceblock can optionally have the "start_flat" custom property defined. This is a boolean value indicating whether or not the iceblock should start "flat". Default is False.</li>
+            <li>The walking iceblock is the third tile found in the "creatures" tileset. Its type name is "walking_iceblock". It turns around at cliffs and can be killed by knocking, burning, or blasting. When stomped, it becomes "flat" and can be carried. It can then be kicked at enemies to knock them, or it can be kicked at hittable blocks to hit them. It cannot be frozen. If hit by an ice bullet, it will become flat if in the kicked state, or return to normal if flat. This enemy is similar to the red Koopa from the Super Mario series.
+                <ul>
+                    <li>A walking iceblock can optionally have the following custom properties defined:
+                        <ul>
+                            <li>"start_flat" <i>(bool)</i>: Whether or not the iceblock should start "flat". Default is False.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
             <li>The bouncing snowball is the fourth tile found in the "creatures" tileset. Its type name is "bouncing_snowball". It is identical to the walking snowball, but instead of simply walking, it constantly bounces three tiles high.</li>
             <li>Spiky is the fifth tile found in the "creatures" tileset. Its type name is "spiky". It turns around at cliffs and can be killed by knocking or blasting. It cannot be stomped or burned. It can be temporarily frozen; while frozen, it is unaffected by gravity and can be walked on. It is unaffected by spikes.
                 <ul>
-                    <li>A Spiky object can optionally have the "start_frozen" property defined. This is a boolean value indicating whether or not the Spiky should start frozen. If set to True, the Spiky will remain frozen until it is thawed with fire. Default is False.</li>
+                    <li>A Spiky object can optionally have the following custom properties defined:
+                        <ul>
+                            <li>"start_frozen" <i>(bool)</i>: Whether or not the Spiky should start frozen. If set to True, the Spiky will remain frozen until it is thawed with fire. Default is False.</li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li>The walking bomb is the sixth tile found in the "creatures" tileset. Its type name is "bomb". It turns around at cliffs. When stomped, it begins "ticking" for a short amount of time before exploding; it can be carried and thrown while "ticking". When burned, knocked, or blasted, it explodes immediately. It can be temporarily frozen if in its normal walking state; while frozen, it is unaffected by gravity and can be walked on. When frozen while "ticking", the ticking timer reverts by one increment; if the ticking timer reverts all the way back to zero, the state of the walking bomb is reset to its normal walking state. It is unaffected by spikes. This enemy is similar to the Bob-Omb from the Super Mario series.
@@ -175,8 +194,8 @@
                     <li>When a walking bomb explodes, all objects within the blast radius are blasted. If Tux is blasted, he takes damage. Additionally, all hittable blocks within the blast radius are continually hit while the explosion continues.</li>
                     <li>A walking bomb object can optionally have the following custom properties defined:
                         <ul>
-                            <li>"start_frozen": A boolean value indicating whether or not the bomb should start frozen. If set to True, the bomb will remain frozen until it is thawed with fire. Default is False.</li>
-                            <li>"start_ticking": A boolean value indicating whether or not the bomb should start out "ticking". Default is False.</li>
+                            <li>"start_frozen" <i>(bool)</i>: Whether or not the bomb should start frozen. If set to True, the bomb will remain frozen until it is thawed with fire. Default is False.</li>
+                            <li>"start_ticking" <i>(bool)</i>: Whether or not the bomb should start out "ticking". Default is False.</li>
                         </ul>
                     </li>
                 </ul>
@@ -200,7 +219,7 @@
             <li>Krosh is the only tile found in the "krosh" tileset. Its type name is "krosh". It is identical to Krush, but larger.</li>
         </ul>
 
-        <h4 id="snowman">Snowman</h3>
+        <h3 id="snowman">Snowman</h3>
         <p>The snowman is the only tile found in the "snowman" tileset. His type name is "snowman". This is a boss consisting of four stages:</p>
         <ol>
             <li>Prior to stage 1, he is dormant and does nothing.</li>
@@ -213,15 +232,15 @@
         <p>This boss is similar to Boom-Boom from Super Mario Bros 3.</p>
         <p>A snowman object can optionally have the following custom properties defined:</p>
         <ul>
-            <li>"hp": The number of hitpoints he has. Default is 5.</li>
-            <li>"strong_stage": The "strong" stage number. Default is 2.</li>
+            <li>"hp" <i>(int)</i>: The number of hitpoints he has. Default is 5.</li>
+            <li>"strong_stage" <i>(int)</i>: The "strong" stage number. Default is 2.</li>
             <li>"final_stage": The "final" stage number. Default is 3.</li>
             <li>"ID": The unique identifier of the object within the level. Default is "boss".</li>
-            <li>"death_timeline": If specified, this indicates a timeline to start when the snowman dies. Otherwise, the death of the snowman will cause the level to be won.</li>
-            <li>"stage": The stage number to start the snowman on. Default is 0. In general, this should be left alone and a timeline should be used to set the stage to 1 when it is time to start the boss fight.</li>
+            <li>"death_timeline" <i>(string)</i>: If specified, this indicates a timeline to start when the snowman dies. Otherwise, the death of the snowman will cause the level to be won.</li>
+            <li>"stage" <i>(int)</i>: The stage number to start the snowman on. Default is 0. In general, this should be left alone and a timeline should be used to set the stage to 1 when it is time to start the boss fight.</li>
         </ul>
 
-        <h4 id="raccot">Raccot</h3>
+        <h3 id="raccot">Raccot</h3>
         <p>Raccot is the only tile found in the "raccot" tileset. His type name is "raccot". This is a boss which alternates between using the icicle attack ("hopping"), which causes Raccot icicles above Tux to fall, and charging at Tux. While charging, if Tux is above him or he cannot get closer to Tux, he jumps 5 tiles. While in the air, if he is above Tux, he ceases horizontal movement and comes crashing down at a high speed ("crushing"), destroying any crates he lands on. He is unaffected by stomping. When knocked, he is unaffected and the responsible object, if applicable, is also knocked. He cannot be burned or frozen. When blasted, his hitpoints reduce by 1. If his hitpoints reach 0, he dies.</p>
         <p>This boss is similar to Bowser from Super Mario Bros 3.</p>
         <p>Raccot has three major stages:</p>
@@ -241,22 +260,22 @@
         </ul>
         <p>A Raccot object can optionally have the following custom properties defined:</p>
         <ul>
-            <li>"hp": The number of hitpoints he has. Default is 5.</li>
+            <li>"hp" <i>(int)</i>: The number of hitpoints he has. Default is 5.</li>
             <li>"hop_time": The amount of time it takes him to hop in frames. A frame is 1/56 of a second. Default is 5.</li>
-            <li>"hop_interval_min": The minimum amount of time between hops in frames. A frame is 1/56 of a second. Default is 45.</li>
-            <li>"hop_interval_max": the maximum amount of time between hops in frames. A frame is 1/56 of a second. Default is 120.</li>
-            <li>"charge_interval_min": The minimum amount of time he waits before switching from hopping to charging, and vice-versa.</li>
-            <li>"charge_interval_max": The maximum amount of time he waits before switching from hopping to charging, and vice-versa.</li>
+            <li>"hop_interval_min" <i>(float</i> or <i>int)</i>: The minimum amount of time between hops in frames. A frame is 1/56 of a second. Default is 45.</li>
+            <li>"hop_interval_max" <i>(float</i> or <i>int)</i>: the maximum amount of time between hops in frames. A frame is 1/56 of a second. Default is 120.</li>
+            <li>"charge_interval_min" <i>(float</i> or <i>int)</i>: The minimum amount of time he waits before switching from hopping to charging, and vice-versa.</li>
+            <li>"charge_interval_max" <i>(float</i> or <i>int)</i>: The maximum amount of time he waits before switching from hopping to charging, and vice-versa.</li>
             <li>"ID": The unique identifier of the object within the level. Default is "boss".</li>
-            <li>"death_timeline": If specified, this indicates a timeline to start when Raccot dies. Otherwise, the death of the snowman will cause the level to be won.</li>
-            <li>"stage": The stage number to start Raccot on. Default is 0. In general, this should be left alone and a timeline should be used to set the stage to 1 when it is time to start the boss fight.</li>
+            <li>"death_timeline" <i>(string)</i>: If specified, this indicates a timeline to start when Raccot dies. Otherwise, the death of the snowman will cause the level to be won.</li>
+            <li>"stage" <i>(int)</i>: The stage number to start Raccot on. Default is 0. In general, this should be left alone and a timeline should be used to set the stage to 1 when it is time to start the boss fight.</li>
         </ul>
 
-        <h4 id="hittableblocks">Hittable Blocks</h3>
+        <h3 id="hittableblocks">Hittable Blocks</h3>
         <p>Hittable blocks are blocks which can be "hit". This can be done by Tux bumping into the block with his head, by hitting the bottom or one of the sides of the block with a flat walking iceblock, or by blasting the block. When any hittable block is hit, all knockable objects standing on the hittable block are knocked.</p>
         <ul>
             <li>The empty item block is the first tile found in the "special_blocks" tileset. Its type name is "emptyblock". It does nothing special when hit.</li>
-            <li>The item block is the third tile found in the "special_blocks" tileset. Its type name is "itemblock". When hit, it produces an item if it has a valid type name specified for the custom "item" property. Otherwise, it produces a coin. It then becomes an empty item block.
+            <li>The item block is the third tile found in the "special_blocks" tileset. Its type name is "itemblock". When hit, it produces an item if it has a valid type name specified for the custom "item" <i>(string)</i> property. Otherwise, it produces a coin. It then becomes an empty item block.
                 <ul>
                     <li>For simplicity, the second, fourth, fifth, sixth, seventh, eighth, and ninth tiles in the "special_blocks" tileset are all item blocks set to contain certain common items. These items are the fire flower, the ice flower, the rock, the spring, the fixed spring, and the Tux doll, respectively.</li>
                 </ul>
@@ -264,10 +283,10 @@
             <li>The hidden item block is the fifth tile found in the "special_blocks" tileset. Its type name is "hiddenblock". It is identical to the item block, but invisible and intangible until it has been hit.</li>
             <li>The crate is the tenth tile found in the "special_blocks" tileset. Its type name is "brick". When hit, it is destroyed.</li>
             <li>The coin crate is the eleventh tile found in the "special_blocks" tileset. Its type name is "coinbrick". It contains 20 coins. When hit, it produces a coin if it still contains coins, or is destroyed otherwise. After it is hit the first time, the number of available coins "decays" over time; as such, hitting the crate more in a shorter period of time allows more coins to be extracted. A coin crate which is the normal four tiles above the ground can usually have about 10 coins extracted from it.</li>
-            <li>The info block is the 15th tile found in the "special_blocks" tileset. Its type name is "infoblock". When hit, the text indicated by the custom "text" property is shown to the player.</li>
+            <li>The info block is the 15th tile found in the "special_blocks" tileset. Its type name is "infoblock". When hit, the text indicated by the custom "text" <i>(string)</i> property is shown to the player.</li>
         </ul>
 
-        <h4 id="items">Basic Items</h3>
+        <h3 id="items">Basic Items</h3>
         <p>Some objects are provided for the player to collect or use in some way.</p>
         <ul>
             <li>The coin is the twelfth tile found in the "special_blocks" tileset. Its type name is "coin". It is unaffected by gravity. Collecting 20 of these restores one heart in Tux's health meter.</li>
@@ -281,14 +300,14 @@
             <li>The Tux doll is the 23rd tile found in the "special_blocks" tileset. Its type name is "tuxdoll". When collected, it awards the player with a large number of points and marks the Tux doll for the current level as found.</li>
         </ul>
 
-        <h4 id="otherblocks">Other Special Blocks</h3>
+        <h3 id="otherblocks">Other Special Blocks</h3>
         <ul>
             <li>The thin ice block is the 17th tile found in the "special_blocks" tileset. Its type name is "thin_ice". It is a solid block which gradually weakens as Tux stands on it or jumps off of it and shatters when it is too substantially weakened. It recovers if Tux stops standing on it before it shatters. Freezing it causes it to recover more quickly. Burning it causes it to weaken further by one step. Blasting it causes it to immediately shatter.</li>
             <li>The boss block is the 21st tile found in the "special_blocks" tileset. Its type name is "boss_block". This is a block that can be activated and deactivated by timelines, useful for starting bosses and also useful for ending bosses without ending the level. The unique identifier of the boss block within the level is set by the custom "ID" property. In timelines, boss blocks can be activated and deactivated by calling the "activate" and "deactivate" methods.</li>
             <li>The ice block is the 22nd tile found in the "special_blocks" tileset. Its type name is "iceblock". It is a solid block which is destroyed when burned or blasted.</li>
         </ul>
 
-        <h4 id="spawnobj">Spawning-related Objects</h3>
+        <h3 id="spawnobj">Spawning-related Objects</h3>
         <ul>
         <li>The spawn point is the 24th tile found in the "special_blocks" tileset. Its type name is "spawn". This simply indicates a location where Tux can spawn to from a checkpoint, bell, warp pipe, or door. Its ID is indicated by the "spawn_id" custom property.</li>
         <li>The bell is the 25th tile found in the "special_blocks" tileset. Its type name is "bell". This is an alternative to checkpoint collision objects which is visible and makes a bell sound when activated.
@@ -309,11 +328,11 @@
         <p>A moving object path is created by drawing a polyline and setting its type to the appropriate type name. The path implicitly creates the object it defines the movement of in the same layer as the path.</p>
         <p>Any moving object path can optionally have the following custom properties defined:</p>
         <ul>
-            <li>"path_speed": The maximum speed at which the object moves along the path in pixels per frame. A frame is 1/58 of a second.</li>
-            <li>"path_accel": The rate at which the object accelerates in pixels per frame per frame when beginning movement along each segment of the path. A frame is 1/56 of a second. Set to -1 for no acceleration.</li>
-            <li>"path_decel": The rate at which the object decelerates in pixels per frame per frame when ending movement along each segment of the path. A frame is 1/56 of a second. Set to -1 for no acceleration.</li>
+            <li>"path_speed" <i>(float</i> or <i>int)</i>: The maximum speed at which the object moves along the path in pixels per frame. A frame is 1/58 of a second.</li>
+            <li>"path_accel" <i>(float</i> or <i>int)</i>: The rate at which the object accelerates in pixels per frame per frame when beginning movement along each segment of the path. A frame is 1/56 of a second. Set to -1 for no acceleration.</li>
+            <li>"path_decel" <i>(float</i> or <i>int)</i>: The rate at which the object decelerates in pixels per frame per frame when ending movement along each segment of the path. A frame is 1/56 of a second. Set to -1 for no deceleration.</li>
             <li>"path_id": The unique identifier of the path within the level.</li>
-            <li>"prime": A boolean value indicating whether or not the path is "primary". This has no effect unless "parent" is specified. Default is False.</li>
+            <li>"prime" <i>(bool)</i>: Whether or not the path is "primary". This has no effect unless "parent" is specified. Default is False.</li>
             <li>"parent": The unique identifier of another moving object path that this path should follow. This effectively links multiple paths together and uses them to move the same object; this can be useful if you want the object to move at different speeds in some places, for example. If this is specified, a corresponding object will not be created unless "prime" is also specified and set to True. In other words, the path with "prime" set to true specifies where the object starts.</li>
         </ul>
         <p>The types of moving object paths are:</p>
@@ -328,7 +347,7 @@
         <p>Circoflames are fireballs which circle around a point. They hurt the player on contact and are destroyed when frozen. This enemy is similar to the rotodisk from Super Mario Bros 3, although multiple circoflames can also be used together to create something like the firebar from Super Mario Bros.</p>
         <p>To place a circoflame, draw a line from the top-left corner of the tile the circoflame should circle around to the top-left corner of the tile the circoflame should start in. Set the type of this line to "circoflame".</p>
         <p>A circoflame path can optionally have the "rvelocity" custom property defined. This is a number indicating how much the circoflame's angle in degrees relative to the center changes every frame (a frame is 1/56 of a second). Clockwise rotation is positive and counterclockwise rotation is negative. Default is 2.</p>
-        <p>A circoflame path is actually a shortcut to creating a "circoflame center". If you want, you can place a circoflame center directly, or you can spawn circoflame centers with an object warp spawn. The circoflame center is the 14th tile found in the "creatures" tileset. Its type name is "circoflame_center". A circoflame center can optionally have the "radius" property, which indicates the distance of the circoflame from the center in pixels, and the "pos" property, which indicates the initial angle of the circoflame in degrees relative to the center (where 0 is pointing directly to the right and positive rotation is clockwise). The default values of these properties are 128 (4 tiles) and 180 (pointing directly to the left), respectively.</p>
+        <p>A circoflame path is actually a shortcut to creating a "circoflame center". If you want, you can place a circoflame center directly, or you can spawn circoflame centers with an object warp spawn. The circoflame center is the 14th tile found in the "creatures" tileset. Its type name is "circoflame_center". A circoflame center can optionally have the "radius" <i>(int)</i> property, which indicates the distance of the circoflame from the center in pixels, and the "pos" <i>(float)</i> property, which indicates the initial angle of the circoflame in degrees relative to the center (where 0 is pointing directly to the right and positive rotation is clockwise). The default values of these properties are 128 (4 tiles) and 180 (pointing directly to the left), respectively.</p>
 
         <h3 id="warps">Warp Pipes</h3>
         <p>Warp pipes are defined in ReTux as paths. There are two kinds of paths: warp paths, which should be drawn in the "warp" layer, and warp spawn paths, which should be drawn in the "warp_spawn" layer. Both kinds of paths should be drawn as polylines beginning and/or ending in the middle of the two-tile pipes they correspond to.</p>
@@ -336,15 +355,23 @@
         <p>A warp path's "dest" property can also be specified as "__map__". In this case, the pipe will not warp the player to another level, but instead will cause the player to return to the map. This generally should only be done for levels that exist between warp spaces on worldmaps. Note that if the level set does not have a worldmap, this will instead cause the game to end.</p>
         <p>Warp spawn paths indicate paths for the player to warp <em>out of</em>. They are a form of spawn point. A warp spawn path's ID is indicated by the "spawn_id" custom property. When Tux spawns into a warp spawn path, he is positioned at the beginning of the path and follows it to the end. When the end of the warp spawn path is reached, Tux exits the warp from the end of the path in the direction it is pointing.</p>
 
-        <h4 id="objectwarp">Object Warp Spawns</h3>
-        <p>An object warp spawn is a special kind of warp spawn path which is used to spawn objects, such as enemies, instead of the player. The path should be drawn the same way as a regular warp spawn, but in the appropriate layer for the object it will spawn (for example, the NPCs layer if it will spawn enemies) and given the "object_warp_spawn" type. The "cls" custom property should be defined to indicate the type name of the object it should spawn.</p>
+        <h3 id="objectwarp">Object Warp Spawns</h3>
+        <p>An object warp spawn is a special kind of warp spawn path which is used to spawn objects, such as enemies, instead of the player. The path should be drawn the same way as a regular warp spawn, but in the appropriate layer for the object it will spawn (for example, the NPCs layer if it will spawn enemies) and given the "object_warp_spawn" type. The "cls" <i>(string)</i> custom property should be defined to indicate the type name of the object it should spawn.</p>
         <p>An object warp spawn path can optionally have the following custom properties defined:</p>
         <ul>
-            <li>"interval": The amount of time to wait in between spawning new objects in frames (a frame is 1/56 of a second). Default is 180.</li>
-            <li>"limit": The maximum number of objects the warp spawn will spawn at a time. There is no limit by default.</li>
-            <li>"silent": A boolean value indicating whether or not the warp spawn should be silent (i.e. not play the warp sound when an object is spawned). This can be useful for non-pipe contexts (such as creating an illusion of flowers growing out of the ground, or icicles growing onto the ceiling).</li>
+            <li>"interval" <i>(float</i> or <i>int)</i>: The amount of time to wait in between spawning new objects in frames (a frame is 1/56 of a second). Default is 180.</li>
+            <li>"limit" <i>(int)</i>: The maximum number of objects the warp spawn will spawn at a time. There is no limit by default.</li>
+            <li>"silent" <i>(bool)</i>: Whether or not the warp spawn should be silent (i.e. not play the warp sound when an object is spawned). This can be useful for non-pipe contexts (such as creating an illusion of flowers growing out of the ground, or icicles growing onto the ceiling).</li>
         </ul>
         <p>All other custom properties will be passed on to the objects when they are spawned.</p>
+        <hr>
+        <nav>
+            <ul>
+                <li>Next page: <a href="worldmap.html">Editing Worldmaps</a></li>
+                <li>Previous page: <a href="gettingstarted.html">Getting Started</a></li>
+                <li><a href="index.html">Index</a></li>
+            </ul>
+        </nav>
     </main>
 
     <div class="footer">

@@ -26,15 +26,25 @@
     </nav>
 
     <main>
+        <nav>
+            <ul>
+                <li>Next page: <a href="levelset.html">Defining the Levelset</a></li>
+                <li>Previous page: <a href="worldmap.html">Editing Worldmaps</a></li>
+                <li><a href="index.html">Index</a></li>
+            </ul>
+        </nav>
+        <hr>
         <h2>Creating Timelines</h2>
         <p>Timelines are special scripts located in "data/timelines" which are executed within levels. They are written in a custom mini-language which can also include Python calls if necessary. Timelines should be used for things like cutscenes and special level events.</p>
         <p>Because ReTux is licensed under the GNU GPL and timelines link to ReTux, all timelines legally must be under a GPL-compatible license. Please indicate such a license with a comment or series of comments at the top of the timeline. See the timelines included with ReTux for an example.</p>
 
         <h3>Table of Contents</h3>
-        <ol type="A">
-            <li><a href="#syntax">Timeline Syntax</a></li>
-            <li><a href="#commands">Commands</a></li>
-        </ol>
+        <nav>
+            <ol type="A">
+                <li><a href="#syntax">Timeline Syntax</a></li>
+                <li><a href="#commands">Commands</a></li>
+            </ol>
+        </nav>
 
         <h3 id="syntax">Timeline Syntax</h3>
         <p>ReTux timelines are standard JSON files connecting moments of time with lists of instructions.</p>
@@ -56,6 +66,14 @@
             <li>"if_not_watched": If the currently active timeline has been watched before, skips all remaining instructions in the current step.</li>
             <li>"while": Evaluates the argument as a Python expression. If the result is true, this instruction and all remaining instructions are duplicated for execution next step, and all future steps are shifted one step later. Otherwise, skips all remaining instructions in the current step. Effectively, this causes the affected instructions to repeat every step until the condition is satisfied.</li>
         </ul>
+        <hr>
+        <nav>
+            <ul>
+                <li>Next page: <a href="levelset.html">Defining the Levelset</a></li>
+                <li>Previous page: <a href="worldmap.html">Editing Worldmaps</a></li>
+                <li><a href="index.html">Index</a></li>
+            </ul>
+        </nav>
     </main>
 
     <div class="footer">
